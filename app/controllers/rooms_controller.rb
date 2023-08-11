@@ -18,6 +18,12 @@ class RoomsController < ApplicationController
 
   private
 
+  def destroy
+    room = Room.find(params[:id])
+    room.destroy
+    redirect_to root_path
+  end
+
   def room_params
     params.require(:room).permit(:name, user_ids: [])
   end
